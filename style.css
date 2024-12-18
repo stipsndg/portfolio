@@ -1,0 +1,459 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Section */
+header.transparent-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0); /* Semi-transparent background */
+    z-index: 1000;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth hide/show transition */
+}
+
+header.transparent-header.hidden {
+    transform: translateY(-100%);
+    opacity: 0; /* Optional fade-out effect */
+}
+
+/* Transparent Header */
+.transparent-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0); /* Semi-transparent background */
+    color: #fff;
+    z-index: 1000;
+    padding: 10px 20px;
+    transition: background 0.3s ease-in-out;
+}
+
+.transparent-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Keep it aligned to the left */
+    width: 100%; /* Full width */
+}
+
+.transparent-header .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 40px; /* Space between the navigation links */
+    justify-content: center; /* Center the links */
+    width: 100%;
+}
+
+.transparent-header .nav-list li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.transparent-header .nav-list li a:hover {
+    color: #d88847; /* Highlight color */
+}
+
+/* Hero Section */
+@keyframes movingGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.hero {
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Flexbox layout */
+    align-items: center; /* Center items vertically */
+    justify-content: flex-start; /* Align the text to the left */
+    padding: 0 10%; /* Padding on both sides */
+    background: linear-gradient(45deg, #ffffff, #b95b39, #000000);
+    background-size: 400% 400%;
+    animation: movingGradient 5s ease infinite;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+/* Hero Text Styling */
+.hero-text {
+    flex: 1;
+    text-align: left;
+    font-size: 2rem; /* Adjust text size */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;  /* Text color */
+    padding-left: 20px; /* Add padding to the left side */
+}
+
+/* Hero Heading Styling */
+.hero-text h2 {
+    font-size: 6rem; /* Larger size for emphasis */
+    color: white; /* Ensures the text color is visible on the background */
+    letter-spacing: 2px; /* Slightly increase letter spacing */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Text shadow for readability */
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+/* Text Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeIn 3s forwards;
+}
+
+/* Hero Image */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Initially hidden */
+    transform: scale(0.8); /* Slightly scale down the image initially */
+    animation: fadeInScale 2s forwards; /* Animation on load */
+}
+
+/* Animation for fade-in and scale */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8); /* Start scaled down */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* End at normal scale */
+    }
+}
+
+.hero-image img {
+    width: 300px; /* Set image width */
+    height: auto; /* Keep aspect ratio intact */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 5px solid #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+    opacity: 0; /* Initially set opacity to 0 */
+}
+
+/* Hero Image Hover Effect */
+.hero-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    opacity: 1; /* Fade in the image when hovered */
+}
+
+/* Gradient Text (Optional) */
+.hero-text h2 {
+    background: linear-gradient(45deg, #ffffff, #ca7145);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero-text p {
+    background: linear-gradient(45deg, #ffffff, #ca7145);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Call-to-Action Button (Optional) */
+.cta-button {
+    background-color: #b95b39;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #000;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        padding: 0 5%;
+    }
+
+    .hero-text h2 {
+        font-size: 4rem; /* Adjust text size for smaller screens */
+    }
+
+    .hero-image img {
+        width: 200px;
+    }
+}
+
+/* Carousel Section */
+.carousel {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 5px solid transparent;
+}
+
+.carousel-inner {
+    max-height: 700px;
+    overflow: hidden;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* About Section */
+/* About Section */
+#about {
+    background: #333;
+    padding: 40px 20px;
+    color: #fff;
+    font-family: 'Bebas Neue', sans-serif;
+    animation: fadeInUp 1.5s ease-out; /* Section fade-in */
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Start from below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at normal position */
+    }
+}
+
+/* About Container (Flex layout) */
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* About Text Fade-In */
+.about-text {
+    flex: 1;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 60%;
+    opacity: 0;
+    transform: translateX(-50px); /* Start from left */
+    animation: fadeInLeft 1.5s forwards; /* Fade-in and slide from the left */
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* About Image Fade-In */
+.about-image {
+    flex: 1;
+    max-width: 25%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px); /* Start from below */
+    animation: fadeInUp 1.5s forwards; /* Fade-in and slide up */
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Add smooth image transition */
+}
+
+.about-image img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+
+/* Projects Section */
+/* Projects Section */
+#projects {
+    background: linear-gradient(to right, #000000, #d88847); /* Black to Orange gradient */
+    padding: 40px 20px;
+    color: #333;
+    font-family: "Bebas Neue", sans-serif; /* Font for projects section */
+}
+
+#projects h2 {
+    color: #222;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out; /* Fade-in animation for title */
+}
+
+/* Fade-In Animation for Project Items */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Each project item fade-in */
+.project-item {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(30px); /* Start from below */
+    animation: fadeIn 0.5s forwards; /* Fade-in with delay */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:nth-child(odd) {
+    animation-delay: 0.3s;
+}
+
+.project-item:nth-child(even) {
+    animation-delay: 0.6s;
+}
+
+/* Hover Effect on Images */
+.project-item img.project-image {
+    width: 100%; /* Make the image take up the full width of its container */
+    height: auto;
+    object-fit: contain; /* Keeps the image aspect ratio intact */
+    border-radius: 8px; /* Add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow for better visibility */
+    transition: transform 0.3s ease; /* Add a smooth transition for hover effect */
+}
+
+.project-item img.project-image:hover {
+    transform: scale(1.05); /* Slightly enlarge the image on hover */
+}
+
+/* Gradient Background for Projects Section */
+.gradient-bg-projects {
+    background: linear-gradient(to right, #d56145, #c29c7f);
+    padding: 50px 0;
+}
+
+
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Social Media Buttons Styling */
+.social-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.social-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;  /* Set the button size */
+    height: 50px;
+    background-color: #333;
+    color: white;
+    border-radius: 50%; /* Circle button */
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Facebook Button */
+.social-button.facebook {
+    background-color: #3b5998; /* Facebook Blue */
+}
+
+.social-button.facebook:hover {
+    background-color: #365899;
+    transform: scale(1.1); /* Slightly grow the button on hover */
+}
+
+/* Instagram Button */
+.social-button.instagram {
+    background-color: #e1306c; /* Instagram Pink */
+}
+
+.social-button.instagram:hover {
+    background-color: #c13584;
+    transform: scale(1.1);
+}
+
+
